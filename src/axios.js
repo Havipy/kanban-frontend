@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { config } from 'react-transition-group';
-
 
 const instance = axios.create({
 	baseURL: 'http://localhost:4444'

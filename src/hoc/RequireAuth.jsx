@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom"
 import { selectIsAuth } from "../store/authSlice";
-import { Children } from "react";
+
 
 const RequireAuth = ({ children }) => {
 	const location = useLocation();
