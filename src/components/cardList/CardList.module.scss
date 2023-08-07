@@ -1,0 +1,13 @@
+.container {
+	padding: 12px;
+	background-color: #ebecf0;
+	flex: 1 0 282px;
+	border-radius: 5px;
+	height: fit-content;
+}
+.title {
+	margin-bottom: 12px;
+	& ~ *:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}

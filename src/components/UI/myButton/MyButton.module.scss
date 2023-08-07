@@ -1,0 +1,34 @@
+.addCardButton {
+	font-size: 18px;
+	line-height: 1;
+	background-color: transparent;
+	border-radius: 5px;
+	width: 102px;
+	height: 29px;
+	color: #5e6c84;
+	&:hover {
+		background-color: white;
+	}
+	&.submit {
+		&:hover {
+			background-color: #396422;
+		}
+
+		background-color: #579436;
+		color: white;
+	}
+	&.decline {
+		&:hover {
+			background-color: #821515;
+		}
+		background-color: #be1616;
+		color: white;
+	}
+	&.rewrite {
+		color: white;
+		background-color: rgb(28, 44, 76);
+		&:hover {
+			background-color: rgb(15, 23, 40);
+		}
+	}
+}

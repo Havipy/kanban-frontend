@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Route, Routes } from 'react-router-dom';
+import './styles/scss/App.scss'
+import Kanban from './pages/kanban/Kanban';
+import NotFound from './pages/notFound/NotFound';
+import Describtion from './pages/describtion/Describtion';
+import Layout from './components/layout/Layout';
+import Login from './pages/login/Login';
+import Registration from './pages/registration/Registration';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchLogin } from './store/authSlice';
+import RequireAuth from './hoc/RequireAuth';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchLogin())
+	}, [dispatch])
+
+	return (
+		<Routes>
+
+			<Route path='/' element={< Layout />} >
+				<Route path='tasks' element={<RequireAuth><Kanban /></RequireAuth>} />
+				<Route path='tasks/:id' element={< Describtion />} />
+				<Route path='/login' element={< Login />} />
+				<Route path='/registration' element={< Registration />} />
+				<Route path='*' element={< NotFound />} />
+			</Route>
+		</Routes>
+
+	)
+
+
 }
 
 export default App;

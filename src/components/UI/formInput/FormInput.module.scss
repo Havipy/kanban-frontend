@@ -1,0 +1,49 @@
+.label {
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	transform: translateY(-50%);
+	color: rgb(173, 173, 173);
+	font-size: 18px;
+	background: rgb(18, 26, 44);
+	pointer-events: none;
+	transition: all 0.3s ease;
+	border-radius: 2px;
+	&.active {
+		color: rgb(255, 255, 255);
+		top: 0;
+		left: 15px;
+		font-size: 16px;
+		padding: 0 2px;
+	}
+}
+
+.errMessage {
+	font-size: 15px;
+	padding-left: 3px;
+	color: rgb(194, 0, 0);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	&.errActive {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+.inputField {
+	position: relative;
+}
+.input {
+	width: 100%;
+	height: 60px;
+	border-radius: 6px;
+	font-size: 18px;
+	padding: 0 15px;
+	border: 2px solid rgb(28, 44, 76);
+	background: rgb(18, 26, 44);
+	color: white;
+	&.err {
+		border: 2px solid rgb(181, 0, 0);
+	}
+}

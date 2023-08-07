@@ -1,0 +1,15 @@
+.footer {
+	background-color: rgb(18, 26, 44);
+	color: white;
+}
+
+.container {
+	display: flex;
+	height: 55px;
+	align-items: center;
+	justify-content: space-between;
+}
+.tasksCounter {
+	display: flex;
+	gap: 20px;
+}

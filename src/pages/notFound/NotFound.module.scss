@@ -1,0 +1,27 @@
+.container {
+	width: 100%;
+	height: 100%;
+	padding-top: 200px;
+}
+.title {
+	text-align: center;
+	font-size: 100px;
+	line-height: 120%;
+	font: bold;
+	color: rgb(94, 94, 94);
+}
+.subtitle {
+	text-align: center;
+	font-size: 25px;
+	line-height: 120%;
+	font-weight: 500;
+	color: rgb(94, 94, 94);
+}
+.link {
+	text-align: center;
+	margin-top: 20px;
+	a {
+		font-size: 18px;
+		color: rgb(204, 68, 0);
+	}
+}

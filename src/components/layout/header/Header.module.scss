@@ -1,0 +1,44 @@
+.header {
+	background-color: rgb(18, 26, 44);
+}
+.container {
+	display: flex;
+	height: 55px;
+	align-items: center;
+	justify-content: space-between;
+}
+.appLabel {
+	color: white;
+	line-height: calc(32 / 21 * 100%);
+	font-size: 28px;
+}
+.profile {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+.profileImg {
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	overflow: hidden;
+	background-color: white;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+.profileButton {
+	width: 24px;
+	height: 24px;
+	transform: rotate(180deg);
+	transition: all 0.5s ease;
+	cursor: pointer;
+	&.active {
+		transform: rotate(0deg);
+	}
+}
+.buttonContainer {
+	display: flex;
+	margin: 0 -5px;
+}
