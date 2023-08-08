@@ -22,7 +22,7 @@ function App() {
 		<Routes>
 			<Route path='/' element={< Layout />} >
 				<Route index element={<RequireAuth><Kanban /></RequireAuth>} />
-				<Route path='tasks/:id' element={< Describtion />} />
+				<Route path='/:id' element={< Describtion />} />
 				<Route path='login' element={< Login />} />
 				<Route path='registration' element={< Registration />} />
 				<Route path='*' element={< NotFound />} />

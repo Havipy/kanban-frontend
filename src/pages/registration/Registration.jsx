@@ -17,12 +17,12 @@ const Registration = () => {
 	const onSubmit = async (values) => {
 		const data = await dispatch(fetchRegister(values));
 		if (data.error) {
-			return alert('Неверный логин или пароль')
+			return alert('Не удалось авторизиоваться')
 		}
 		if ('token' in data.payload) {
 			window.localStorage.setItem('token', data.payload.token)
 		}
-		navigate('/tasks')
+		navigate('/')
 	}
 	const inputs = [
 		{

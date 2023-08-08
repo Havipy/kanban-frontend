@@ -9,7 +9,7 @@ const Footer = () => {
 	return (
 		<footer className={cl.footer}>
 			<div className={cl.container}>
-				{(pathname === '/tasks' || pathname === '/description') &&
+				{(pathname === '/' || pathname === '/description') &&
 					<>
 						<div className={cl.tasksCounter}>
 							<div>Active tasks: {tasks.filter(task => task.stage !== 4).length}</div>

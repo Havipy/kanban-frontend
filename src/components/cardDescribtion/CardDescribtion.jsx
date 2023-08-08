@@ -23,7 +23,7 @@ const CardDescribtion = () => {
 		<div className={cl.wrapper}>
 			<div className={cl.header}>
 				<span className={cl.title}>{task?.name}</span>
-				<Link to='/tasks' className={cl.exitButton}><img src='/img/cross-svgrepo-com.svg' alt='close button'></img></Link>
+				<Link to='/' className={cl.exitButton}><img src='/img/cross-svgrepo-com.svg' alt='close button'></img></Link>
 			</div>
 			{inputOpen
 				?
