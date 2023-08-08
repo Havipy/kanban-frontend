@@ -14,27 +14,21 @@ import RequireAuth from './hoc/RequireAuth';
 
 
 function App() {
-
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(fetchLogin())
+		console.log(dispatch(fetchLogin()));
 	}, [dispatch])
-
 	return (
 		<Routes>
-
 			<Route path='/' element={< Layout />} >
-				<Route path='tasks' element={<RequireAuth><Kanban /></RequireAuth>} />
+				<Route index element={<RequireAuth><Kanban /></RequireAuth>} />
 				<Route path='tasks/:id' element={< Describtion />} />
-				<Route path='/login' element={< Login />} />
-				<Route path='/registration' element={< Registration />} />
+				<Route path='login' element={< Login />} />
+				<Route path='registration' element={< Registration />} />
 				<Route path='*' element={< NotFound />} />
 			</Route>
 		</Routes>
-
 	)
-
-
 }
 
 export default App;

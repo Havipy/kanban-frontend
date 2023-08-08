@@ -1,6 +1,17 @@
 .header {
 	background-color: rgb(18, 26, 44);
 }
+.logo {
+	@media (max-width: 767.98px) {
+		display: none;
+	}
+}
+.logoAdaptive {
+	display: none;
+	@media (max-width: 767.98px) {
+		display: inline;
+	}
+}
 .container {
 	display: flex;
 	height: 55px;

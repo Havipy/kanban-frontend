@@ -26,14 +26,16 @@
 
 .dropdownList {
 	cursor: pointer;
+
 	position: absolute;
 	z-index: -1;
 	top: 110%;
 	left: 0;
 	width: 100%;
+	max-height: 100px;
 	background-color: white;
 	border-radius: 5px;
-	overflow: hidden;
+	overflow: scroll;
 	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 	opacity: 0;
 	transform: translateY(-90%);

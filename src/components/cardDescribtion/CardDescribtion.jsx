@@ -8,7 +8,7 @@ import { fetchChangeTasksDescription, fetchTasks } from '../../store/taskSlice'
 import { useEffect } from 'react'
 const CardDescribtion = () => {
 	const { id } = useParams();
-	const task = useSelector(state => state.tasks.tasks).find(task => task.id == id);
+	const task = useSelector(state => state.tasks.tasks).find(task => String(task.id) === id);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(fetchTasks());
@@ -23,7 +23,7 @@ const CardDescribtion = () => {
 		<div className={cl.wrapper}>
 			<div className={cl.header}>
 				<span className={cl.title}>{task?.name}</span>
-				<Link to='/tasks' className={cl.exitButton}><img src='/img/cross-svgrepo-com.svg'></img></Link>
+				<Link to='/tasks' className={cl.exitButton}><img src='/img/cross-svgrepo-com.svg' alt='close button'></img></Link>
 			</div>
 			{inputOpen
 				?

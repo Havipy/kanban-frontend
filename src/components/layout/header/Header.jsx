@@ -14,7 +14,8 @@ const Header = () => {
 	return (
 		<header className={cl.header}>
 			<div className={cl.container}>
-				<div className={cl.appLabel}><span>Awesome Kanban Board</span></div>
+				<div className={cl.appLabel}><span className={cl.logo}>Awesome Kanban Board</span><span className={cl.logoAdaptive}>Kanban</span></div>
+
 				{isAuth ?
 					<div className={cl.profile}>
 						<div className={cl.profileImg}><img src="/img/user-avatar.svg" alt="profile" /></div>
