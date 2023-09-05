@@ -8,7 +8,7 @@ export const fetchUserData = createAsyncThunk<IUserFullData, IUserLogin, { rejec
 		try {
 			const response = await axiosInstance.post('auth/login', userData);
 			const data = response.data;
-			console.log(data)
+
 			return data;
 		}
 		catch (e) {
