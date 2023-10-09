@@ -1,0 +1,8 @@
+.wrapper {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	background-color: white;
+	overflow-y: scroll;
+}

@@ -1,0 +1,35 @@
+.ck-content {
+	line-height: 170%;
+	h2 {
+		display: block;
+		font-size: 1.5em;
+
+		line-height: 150%;
+		font-weight: bold;
+	}
+	h3 {
+		display: block;
+		font-size: 1.17em;
+
+		line-height: 150%;
+		margin-bottom: 0.5em;
+		font-weight: bold;
+	}
+
+	ul,
+	ul > li,
+	ol,
+	ol > li {
+		padding: inherit;
+	}
+	ul,
+	ol {
+		list-style-position: inside;
+	}
+	ul li {
+		list-style: inherit;
+	}
+}
+.ck.ck-balloon-panel.ck-balloon-panel_visible {
+	display: none;
+}

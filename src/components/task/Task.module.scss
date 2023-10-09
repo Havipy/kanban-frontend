@@ -1,0 +1,15 @@
+.task {
+	overflow: hidden;
+	border-radius: 5px;
+	background-color: white;
+	display: flex;
+	word-break: normal;
+	max-width: 234px;
+	justify-content: space-between;
+	padding: 10px;
+	box-shadow: 5px 5px 8px 0px rgba(0, 0, 0, 0.2);
+	margin-bottom: 12px;
+	&.active {
+		box-shadow: 7px 7px 10px 0px rgba(0, 0, 0, 0.2);
+	}
+}

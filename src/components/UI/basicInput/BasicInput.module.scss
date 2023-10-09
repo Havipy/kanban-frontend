@@ -1,0 +1,26 @@
+.basicInput {
+	width: 100%;
+	border-radius: 2px;
+	font-size: 18px;
+	background-color: rgba(69, 186, 1, 0.071);
+	color: rgb(0, 98, 0);
+	transition: all 0.3s ease;
+}
+.addSectionInput,
+.addBoardInput {
+	box-shadow: 0px 0px 8px 5px rgba(69, 186, 1, 0.5);
+	padding: 5px 7px 6px;
+
+	&:focus {
+		box-shadow: 0px 0px 8px 5px rgb(69, 186, 1);
+	}
+	&::placeholder {
+		color: rgba(0, 98, 0, 0.625);
+	}
+}
+
+.sectionInput {
+	line-height: 130%;
+	background-color: rgb(228, 255, 212);
+	padding-left: 2px;
+}

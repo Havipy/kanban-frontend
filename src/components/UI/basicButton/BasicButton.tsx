@@ -1,35 +1,39 @@
 import cl from './BasicButton.module.scss';
-
 export enum ButtonVariant {
-	decline = 'decline',
-	submit = 'submit',
-	rewrite = 'rewrite'
+	red = 'red',
+	blue = 'blue',
+	green = 'green',
+	yellow = 'yellow',
 }
 interface BasicButtonProps {
-	variant?: ButtonVariant,
-	children: React.ReactNode,
-	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void,
+	children?: React.ReactNode,
+	variant: ButtonVariant,
+	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void,
+	visible?: boolean
 }
-const myButton: React.FC<BasicButtonProps> = ({ children, variant, onClick }) => {
-	const rootClasses = [cl.addCardButton];
+const BasicButton: React.FC<BasicButtonProps> = ({ children, variant, visible, ...props }) => {
+	const rootClasses = [cl.button];
+	if (visible) {
+		rootClasses.push(cl.visible)
+	}
 	switch (variant) {
-		case (ButtonVariant.submit):
-			rootClasses.push(cl.submit);
+		case (ButtonVariant.blue):
+			rootClasses.push(cl.blue);
 			break;
-		case (ButtonVariant.decline):
-			rootClasses.push(cl.decline);
+		case (ButtonVariant.green):
+			rootClasses.push(cl.green);
 			break;
-		case (ButtonVariant.rewrite):
-			rootClasses.push(cl.rewrite);
+		case (ButtonVariant.red):
+			rootClasses.push(cl.red);
+			break;
+		case (ButtonVariant.yellow):
+			rootClasses.push(cl.yellow);
 			break;
 		default:
 			break;
 	}
 	return (
-		<button onClick={onClick} className={rootClasses.join(' ')}>
-			{children}
-		</button>
+		<button {...props} className={rootClasses.join(' ')}>{children}</button>
 	)
 }
-
-export default myButton;
+export default BasicButton;

@@ -1,26 +1,58 @@
+import React from 'react';
 import { useEffect } from 'react';
-import CardList from '../../components/cardList/CardList';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 
-import cl from './Kanban.module.scss'
-import { useAppDispatch } from '../../hooks/useRedux';
-import { fetchTasks } from '../../store/taskSlice';
+import { useBoardSections } from '../../hooks/useSections';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { useDragHandler } from '../../hooks/useDragHandler';
+import { fetchBoardData } from '../../store/boardSlice';
 
-const Kanban: React.FC = () => {
+import Section from '../../components/section/Section';
+import AddColumn from '../../components/addColumn/AddColumn';
+
+import cl from './Kanban.module.scss';
+import LoadingCover from '../../components/UI/loadingCover/LoadingCover';
+
+const Kanban: React.FC = function () {
 	const dispatch = useAppDispatch();
+	const sectionsIds = useAppSelector(state => state.board.board.sectionIds);
+	const sections = useBoardSections(sectionsIds);
+	const isLoading = useAppSelector(state => state.board.loading);
+	const { id } = useParams();
 	useEffect(() => {
-		dispatch(fetchTasks());
-	}, [dispatch])
+		if (id) {
+			dispatch(fetchBoardData(id));
+		}
+	}, [id, dispatch])
 	return (
-		<>
-			<div className='kanban__container'>
-				<div className={cl.wrapper}>
-					<CardList type='Backlog' />
-					<CardList type='Ready' />
-					<CardList type='In progress' />
-					<CardList type='Finished' />
-				</div>
-			</div>
-		</>
+		<DragDropContext
+			onDragEnd={useDragHandler(sections, sectionsIds)} >
+			<Droppable droppableId={id ? id : 'all-columns'} direction={'horizontal'} type={'column'}>
+				{(provided) =>
+					<div
+						className={[cl.container, cl.kanbanContainer].join(' ')}
+						ref={provided.innerRef}
+						{...provided.droppableProps}>
+						{sections.map((section, index) =>
+							<Section
+								key={section._id}
+								sectionTitle={section.title}
+								sectionId={section._id}
+								tasksIds={section.tasksIds}
+								boardId={id}
+								index={index}
+							></Section>)}
+						{provided.placeholder}
+						<AddColumn boardId={id} />
+					</div>}
+			</Droppable>
+			{isLoading ?
+				<LoadingCover />
+				:
+				<></>
+			}
+		</DragDropContext >
 	);
 }
 

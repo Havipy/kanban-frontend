@@ -3,14 +3,14 @@
 	top: 50%;
 	left: 15px;
 	transform: translateY(-50%);
-	color: rgb(173, 173, 173);
+	color: rgb(42, 42, 42);
 	font-size: 18px;
-	background: rgb(18, 26, 44);
+	background: #dfdfdf;
 	pointer-events: none;
 	transition: all 0.3s ease;
 	border-radius: 2px;
 	&.active {
-		color: rgb(255, 255, 255);
+		color: rgb(42, 42, 42);
 		top: 0;
 		left: 15px;
 		font-size: 16px;
@@ -24,7 +24,6 @@
 	color: rgb(194, 0, 0);
 	opacity: 0;
 	visibility: hidden;
-	transition: all 0.3s ease;
 	&.errActive {
 		visibility: visible;
 		opacity: 1;
@@ -40,9 +39,9 @@
 	border-radius: 6px;
 	font-size: 18px;
 	padding: 0 15px;
-	border: 2px solid rgb(28, 44, 76);
-	background: rgb(18, 26, 44);
-	color: white;
+	border: 2px solid #909090;
+	background: #dfdfdf;
+	color: black;
 	&.err {
 		border: 2px solid rgb(181, 0, 0);
 	}

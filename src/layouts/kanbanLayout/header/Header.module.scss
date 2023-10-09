@@ -1,0 +1,20 @@
+.headerContainer {
+	display: flex;
+	height: 70px;
+	align-items: center;
+	justify-content: space-between;
+	color: rgb(0, 98, 0);
+}
+.navigationContainer {
+	font-size: 24px;
+	color: rgb(0, 98, 0);
+}
+.boardsLink {
+	color: rgb(0, 98, 0);
+	&:hover {
+		color: rgb(53, 140, 53);
+	}
+}
+.header {
+	padding: 0 25px;
+}

@@ -6,17 +6,12 @@ interface RequireAuthProps {
 }
 const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
 	const location = useLocation();
-	const isAuth = useAppSelector(selectIsAuth);
-	const { status } = useAppSelector(state => state.auth);
-
-	if (status === 'resolved') {
-		if (!isAuth) {
-			return <Navigate to='/login' state={{ from: location }}></Navigate>
-		}
+	const { error } = useAppSelector(state => state.auth);
+	if (!error) {
 		return children
 	}
-	else if ((status === 'rejected')) {
-		return <Navigate to='/login' state={{ from: location }}></Navigate>
+	else {
+		return <Navigate to='/' state={{ from: location }}></Navigate>
 	}
 }
 export default RequireAuth

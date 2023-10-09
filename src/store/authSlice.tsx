@@ -1,72 +1,64 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axiosInstance from '../axios'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUser, IUserFullData, IUserLogin } from '../types/user.interface.js';
 import axios, { AxiosError } from 'axios';
+import AuthService from '../API/services/authService';
 
-export const fetchUserData = createAsyncThunk<IUserFullData, IUserLogin, { rejectValue: AxiosError | Error }>('auth/fetchUserData',
+export const fetchUserData = createAsyncThunk<IUserFullData, IUserLogin, { rejectValue: string }>(
+	'auth/fetchUserData',
 	async (userData, { rejectWithValue }) => {
 		try {
-			const response = await axiosInstance.post('auth/login', userData);
-			const data = response.data;
+			const data = await AuthService.loginUser(userData);
 
 			return data;
 		}
 		catch (e) {
-			if (axios.isAxiosError(e)) {
-				rejectWithValue(e as AxiosError)
-			} else {
-				rejectWithValue(e as Error);
-			}
+			const error = axios.isAxiosError(e) ? e as AxiosError : e as Error;
+			return rejectWithValue(error.message);
 		}
 	})
 
-export const fetchLogin = createAsyncThunk<IUser, undefined, { rejectValue: AxiosError | Error }>('auth/fetchLogin', async (_, { rejectWithValue }) => {
-	try {
-		const response = await axiosInstance.get('auth/me')
-		const data = response.data;
-
-		return data;
-	}
-	catch (e) {
-		if (axios.isAxiosError(e)) {
-			rejectWithValue(e as AxiosError)
-		} else {
-			rejectWithValue(e as Error);
+export const fetchLogin = createAsyncThunk<IUser, undefined, { rejectValue: string }>(
+	'auth/fetchLogin',
+	async (_, { rejectWithValue }) => {
+		try {
+			const data = await AuthService.checkUserAuth();
+			return data;
 		}
-	}
-})
-export const fetchRegister = createAsyncThunk<IUserFullData, IUser, { rejectValue: AxiosError | Error }>('auth/fetchRegister', async (userData, { rejectWithValue }) => {
-	try {
-		const response = await axiosInstance.post('auth/reqistration', userData);
-		const data = response.data;
-		return data;
-	}
-	catch (e) {
-		if (axios.isAxiosError(e)) {
-			rejectWithValue(e as AxiosError)
-		} else {
-			rejectWithValue(e as Error);
+		catch (e) {
+			const error = axios.isAxiosError(e) ? e as AxiosError : e as Error;
+			return rejectWithValue(error.message);
 		}
-	}
-})
+	})
+export const fetchRegister = createAsyncThunk<IUserFullData, IUser, { rejectValue: string }>(
+	'auth/fetchRegister',
+	async (userData, { rejectWithValue }) => {
+		try {
+			const data = await AuthService.registerUser(userData);
+			return data;
+		}
+		catch (e) {
+			const error = axios.isAxiosError(e) ? e as AxiosError : e as Error;
+			return rejectWithValue(error.message);
+		}
+	})
 
 type AuthState = {
 	data: IUser | IUserFullData | null,
-	status: string
-	error: null | unknown
+	loading: boolean,
+	error: unknown
 }
 const initialState: AuthState = {
 	data: null,
-	status: 'loading',
+	loading: true,
 	error: null
 }
-
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
 		logout: (state) => {
 			state.data = null;
+			console.log(state);
 			window.localStorage.removeItem('token');
 		}
 	},
@@ -74,24 +66,23 @@ const authSlice = createSlice({
 		builder => {
 			for (const thunk of [fetchUserData, fetchLogin, fetchRegister]) {
 				builder.addCase(thunk.pending, (state) => {
-					state.status = 'loading';
+					state.loading = false
 					state.error = null;
 				});
 				builder.addCase(thunk.fulfilled, (state, action) => {
-					state.status = 'resolved';
+					state.loading = false;
 					state.data = action.payload;
 				});
 				builder.addCase(thunk.rejected, (state, action) => {
-					state.status = 'rejected';
+					state.loading = false;
 					state.error = action.payload;
 				});
 			}
 		}
 })
 
-export const selectIsAuth = (state: { auth: AuthState }) => {
-
-	return Boolean(state.auth.data)
+export const selectIsAuth = (state: AuthState) => {
+	return Boolean(state.data);
 };
 export const { logout } = authSlice.actions;
 export default authSlice.reducer;

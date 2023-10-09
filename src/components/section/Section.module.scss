@@ -1,0 +1,65 @@
+.sectionContainer {
+	flex: 0 0 250px;
+	height: fit-content;
+	background-color: #e1e1e16f;
+	box-shadow: 2px 2px 6px 0px rgba(34, 60, 80, 0.2);
+	margin-bottom: 10px;
+	.active {
+		background-color: #ffcbcb64;
+	}
+}
+.sectionHeader {
+	display: flex;
+	padding: 7px 8px 7px;
+	border-radius: 2px;
+	justify-content: space-between;
+	align-items: center;
+	background: linear-gradient(270deg, #3a995e, #20c215);
+}
+.inputContainer {
+	width: 180px;
+	&.hidden {
+		display: none;
+	}
+}
+.buttonContainer {
+	display: flex;
+	gap: 8px;
+	padding-left: 8px;
+	align-items: center;
+}
+.deleteBucket {
+	width: 20px;
+	height: 20px;
+	cursor: grab;
+	fill: #0a4407;
+	transition: all 0.5s ease;
+	&:hover {
+		fill: white;
+	}
+}
+.title {
+	border-radius: 2px;
+	line-height: 130%;
+	flex: 1 1 100%;
+	word-break: break-all;
+	color: #ecf3eb;
+	cursor: grab;
+	&.hidden {
+		visibility: hidden;
+	}
+}
+.addTaskButton {
+	font-size: 23px;
+	color: #0a4407;
+	cursor: grab;
+	transition: all 0.5s ease;
+	&:hover {
+		color: white;
+	}
+}
+.tasksContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 8px 8px 20px;
+}

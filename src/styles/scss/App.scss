@@ -1,5 +1,6 @@
 @import "nullstyle";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap");
+@import "ckeditorStyle";
 html,
 body {
 	font-family: "Roboto", sans-serif;
@@ -12,7 +13,19 @@ body {
 	height: 100%;
 }
 [class*="container"] {
-	max-width: 1230px;
-	padding: 0 15px;
+	max-width: 1480px;
+	padding: 0 20px;
 	margin: 0 auto;
+}
+.loader {
+	position: absolute;
+	height: 100vh;
+	background: white;
+	width: 100%;
+	z-index: 50;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -1,0 +1,17 @@
+.container {
+	background-color: white;
+	height: 100%;
+}
+.boardsMenuTitle {
+	color: #14ac0e;
+	font-size: 35px;
+	color: -webkit-linear-gradient(#eee, #333);
+	margin-bottom: 50px;
+	line-height: 120%;
+}
+.boardsCardContainer {
+	flex-wrap: wrap;
+	display: flex;
+	margin-bottom: 50px;
+	margin: 0 -15px;
+}

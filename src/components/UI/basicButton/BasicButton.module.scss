@@ -1,34 +1,74 @@
-.addCardButton {
-	font-size: 18px;
-	line-height: 1;
-	background-color: transparent;
-	border-radius: 5px;
-	width: 102px;
-	height: 29px;
-	color: #5e6c84;
-	&:hover {
-		background-color: white;
-	}
-	&.submit {
-		&:hover {
-			background-color: #396422;
-		}
+.button {
+	width: 100%;
+	height: 100%;
 
-		background-color: #579436;
-		color: white;
+	letter-spacing: 1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+	cursor: pointer;
+	border-radius: 5px;
+
+	position: relative;
+	top: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease;
+	&.visible {
+		opacity: 1;
+		visibility: visible;
 	}
-	&.decline {
+	&.blue {
+		background-color: rgba(0, 121, 191, 1);
 		&:hover {
-			background-color: #821515;
+			background-color: rgb(0, 73, 115);
 		}
-		background-color: #be1616;
-		color: white;
+		&:active {
+			top: 3px;
+			box-shadow: 0 2px 0 rgb(0, 46, 72);
+		}
 	}
-	&.rewrite {
-		color: white;
-		background-color: rgb(28, 44, 76);
+	&.red {
+		background-color: rgb(156, 36, 36);
+		box-shadow: 0 5px 0 rgb(78, 11, 11);
 		&:hover {
-			background-color: rgb(15, 23, 40);
+			background-color: rgb(118, 25, 25);
+		}
+		&:active {
+			top: 3px;
+			box-shadow: 0 2px 0 rgb(53, 6, 6);
+		}
+	}
+	&.green {
+		background-color: #44911a;
+		box-shadow: 0 5px 0 #234f0e;
+		&:hover {
+			background-color: #2f5e18;
+		}
+		&:active {
+			top: 3px;
+			box-shadow: 0 2px 0 #153508;
+		}
+	}
+	&.yellow {
+		letter-spacing: 2px;
+
+		background-color: #d1b940;
+		color: white;
+		border-radius: 20px;
+		box-shadow: 0 5px 0 #807126;
+		&:hover {
+			background-color: #776925;
+		}
+		&:active {
+			top: 3px;
+			box-shadow: 0 2px 0 #5e531d;
 		}
 	}
 }

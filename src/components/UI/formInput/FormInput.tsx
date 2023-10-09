@@ -24,7 +24,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			<div className={cl.inputField}>
 				<input className={error ? [cl.input, cl.err].join(' ') : cl.input}
 					{...inputProps}
-
 					{...register(name, inputOptions)}
 					onBlur={(e) => {
 						if (!e.target.value.trim()) {
@@ -39,7 +38,6 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 				<label className={focused ? `${cl.label} ${cl.active}` : cl.label}>{label}</label>
 			</div>
 			<div className={error ? [cl.errMessage, cl.errActive].join(' ') : cl.errMessage}>{String(error?.message) || 'error'}</div></>
-
 	);
 };
 
