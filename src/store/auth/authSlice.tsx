@@ -26,7 +26,6 @@ const authSlice = createSlice({
 		builder => {
 			for (const thunk of [fetchUserData, fetchLogin, fetchRegister]) {
 				builder.addCase(thunk.pending, (state) => {
-					console.log('skss')
 					state.loading = true;
 					state.error = null;
 				});

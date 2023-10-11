@@ -8,7 +8,6 @@ interface RequireNotAuthProps {
 }
 const RequireNotAuth: React.FC<RequireNotAuthProps> = ({ children }) => {
 	const isAuth = useAppSelector(selectIsAuth);
-	console.log();
 	if (isAuth) {
 		return <Navigate to='/boards' ></Navigate>
 	}
