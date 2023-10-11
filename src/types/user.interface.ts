@@ -1,10 +1,11 @@
+export interface IUserRegister extends Omit<IUser, '_id' | 'token'> {
+}
+export interface IUserLogin extends Omit<IUser, 'fullName' | '_id' | 'token'> {
+}
 export interface IUser {
-	fullName: string
-	email: string
+	_id: string,
+	fullName: string,
+	email: string,
 	password: string
-}
-export interface IUserLogin extends Omit<IUser, 'fullName'> {
-}
-export interface IUserFullData extends IUser {
 	token: string,
 }

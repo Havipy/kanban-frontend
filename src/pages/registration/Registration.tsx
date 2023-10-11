@@ -1,33 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { fetchRegister } from '../../store/authSlice';
+import { fetchRegister } from '../../store/auth/asyncActions';
 import { useAppDispatch } from '../../hooks/useRedux';
 import { useNavigate } from 'react-router-dom';
 
 import FormInput from '../../components/UI/formInput/FormInput';
-import { IUser } from '../../types/user.interface';
+import { IUser, IUserRegister } from '../../types/user.interface';
 
 import BasicButton, { ButtonVariant } from '../../components/UI/basicButton/BasicButton';
-import cl from './Registration.module.scss';
+import LoadingCover from '../../components/UI/loadingCover/LoadingCover';
+
 import { REGISTRATION_INPUTS_DATA } from '../../data/formInputsData';
+
+import cl from './Registration.module.scss';
 
 const Registration: React.FC = () => {
 	const inputs = REGISTRATION_INPUTS_DATA;
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const [isLoading, setLoading] = useState<boolean>(false);
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
-	} = useForm<IUser>();
+	} = useForm<IUserRegister>();
 
-	const onSubmit: SubmitHandler<IUser> = async (values) => {
+	const onSubmit: SubmitHandler<IUserRegister> = async (values) => {
+		setLoading(true);
 		const data = await dispatch(fetchRegister(values));
-		console.log(data.payload);
-		if (!data.payload) {
-			return alert('Не удалось авторизиоваться')
+		setLoading(false);
+		if (data.meta.requestStatus !== 'fulfilled') {
+			return alert('Не удалось зарегистрироваться')
 		}
-		navigate('/boards')
+		const userData = data.payload as IUser;
+		if ('token' in userData) {
+			window.localStorage.setItem('token', userData.token)
+		}
+		navigate('/boards');
 	}
 	return (
 		<div className={cl.container}>
@@ -44,6 +53,11 @@ const Registration: React.FC = () => {
 				))}
 				<div className={cl.buttonContainer}><BasicButton visible={true} variant={ButtonVariant.yellow}>Зарегистрироваться</BasicButton></div>
 			</form>
+			{isLoading
+				?
+				<LoadingCover />
+				:
+				<></>}
 		</div >
 	);
 }

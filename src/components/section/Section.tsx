@@ -3,14 +3,15 @@ import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 import { useAppDispatch } from '../../hooks/useRedux';
 import { useSectionTasks } from '../../hooks/useTasks';
-import { fetchAddTask, fetchUpdateSectionTitle } from '../../store/sectionSlice';
-import { fetchDeleteSection } from '../../store/boardSlice';
+import { fetchAddTaskId, fetchUpdateSectionTitle } from '../../store/sections/asyncActions';
+import { fetchDeleteSection } from '../../store/board/asyncActions';
 
 import Task from '../task/Task';
 import { ReactComponent as DeleteBucket } from '../../assets/img/delete-button-svgrepo-com.svg';
 import BasicInput, { InputVariant } from '../UI/basicInput/BasicInput';
 
 import cl from './Section.module.scss';
+
 
 interface SectionProps {
 	sectionTitle: string,
@@ -27,6 +28,7 @@ const Section: React.FC<SectionProps> = React.memo(function ({ sectionId, sectio
 	const [isInputOpen, setInputOpen] = useState<boolean>(false);
 	const [title, setTitle] = useState<string>(sectionTitle);
 	const inputRef = useRef<HTMLInputElement>(null);
+
 	const submitHandler = () => {
 		setInputOpen(false);
 		if (title.trim() === '') {
@@ -35,6 +37,7 @@ const Section: React.FC<SectionProps> = React.memo(function ({ sectionId, sectio
 		}
 		dispatch(fetchUpdateSectionTitle({ _id: sectionId, title: title }));
 	}
+
 	return (
 		<Draggable draggableId={sectionId} index={index}>{(provided) => (
 			<div {...provided.draggableProps}
@@ -68,7 +71,7 @@ const Section: React.FC<SectionProps> = React.memo(function ({ sectionId, sectio
 						<div className={cl.addTaskButton}
 							onClick={() => {
 								if (boardId) {
-									dispatch(fetchAddTask({ _id: sectionId, boardId }));
+									dispatch(fetchAddTaskId({ _id: sectionId, boardId }));
 								}
 							}}>+</div>
 						<DeleteBucket

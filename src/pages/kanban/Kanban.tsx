@@ -6,25 +6,31 @@ import { useParams } from 'react-router-dom';
 import { useBoardSections } from '../../hooks/useSections';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
 import { useDragHandler } from '../../hooks/useDragHandler';
-import { fetchBoardData } from '../../store/boardSlice';
+import { fetchBoardData } from '../../store/board/asyncActions';
 
 import Section from '../../components/section/Section';
 import AddColumn from '../../components/addColumn/AddColumn';
-
-import cl from './Kanban.module.scss';
 import LoadingCover from '../../components/UI/loadingCover/LoadingCover';
 
+import cl from './Kanban.module.scss';
+
+
+
 const Kanban: React.FC = function () {
+
 	const dispatch = useAppDispatch();
 	const sectionsIds = useAppSelector(state => state.board.board.sectionIds);
 	const sections = useBoardSections(sectionsIds);
 	const isLoading = useAppSelector(state => state.board.loading);
+
 	const { id } = useParams();
+
 	useEffect(() => {
 		if (id) {
 			dispatch(fetchBoardData(id));
 		}
-	}, [id, dispatch])
+	}, [id, dispatch]);
+
 	return (
 		<DragDropContext
 			onDragEnd={useDragHandler(sections, sectionsIds)} >
@@ -47,11 +53,7 @@ const Kanban: React.FC = function () {
 						<AddColumn boardId={id} />
 					</div>}
 			</Droppable>
-			{isLoading ?
-				<LoadingCover />
-				:
-				<></>
-			}
+			{isLoading && <LoadingCover />}
 		</DragDropContext >
 	);
 }

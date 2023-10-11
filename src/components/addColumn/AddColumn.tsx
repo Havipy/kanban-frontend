@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAppDispatch } from '../../hooks/useRedux';
-import { fetchAddSection } from '../../store/boardSlice';
+import { fetchAddSection } from '../../store/board/asyncActions';
 import BasicInput, { InputVariant } from '../UI/basicInput/BasicInput';
 
 import cl from './AddColumn.module.scss';

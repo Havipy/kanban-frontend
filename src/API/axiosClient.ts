@@ -11,5 +11,5 @@ axiosClient.interceptors.request.use((config) => {
 	config.headers.Authorization = `Bearer ${getToken()}`;
 	return config;
 }
-)
-export default axiosClient
+);
+export default axiosClient;

@@ -10,6 +10,7 @@ export default class BoardService {
 		const tasks: ITaskMapData = {}
 		response.data.sections.forEach(section => sections[section._id] = section);
 		response.data.tasks.forEach(task => tasks[task._id] = task);
+
 		return { board: response.data.board, tasks, sections };
 	}
 	static async getAll() {

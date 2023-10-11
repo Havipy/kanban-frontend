@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 import AuthHeader from './header/AuthHeader';
 import AuthMain from './main/AuthMain';
 
+import AuthFooter from './footer/AuthFooter';
 import cl from './AuthLayout.module.scss';
-
 
 const AuthLayout: React.FC = () => {
 	return (
@@ -13,6 +13,7 @@ const AuthLayout: React.FC = () => {
 			<AuthMain>
 				<Outlet />
 			</AuthMain>
+			<AuthFooter />
 		</div>
 	)
 }

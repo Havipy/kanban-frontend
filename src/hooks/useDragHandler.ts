@@ -1,7 +1,7 @@
 import { DropResult } from "react-beautiful-dnd";
 import { useAppDispatch } from "./useRedux";
-import { moveTasksBetweenSections, reorderTasksInSection } from "../store/sectionSlice";
-import { reorderSections } from "../store/boardSlice";
+import { moveTasksBetweenSections, reorderTasksInSection } from "../store/sections/sectionSlice";
+import { reorderSections } from "../store/board/boardSlice";
 
 import SectionService from "../API/services/sectionService";
 import BoardService from "../API/services/boardService";

@@ -5,6 +5,7 @@ export interface IBoard {
 	_id: string,
 	title: string,
 	sectionIds: string[],
+	user: string,
 }
 export interface IBoardData {
 	board: IBoard,

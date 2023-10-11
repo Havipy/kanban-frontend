@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import taskReducer from "./taskSlice";
-import authReducer from "./authSlice";
-import sectionReducer from "./sectionSlice";
-import boardReducer from "./boardSlice";
+import taskReducer from "./tasks/taskSlice";
+import authReducer from "./auth/authSlice";
+import sectionReducer from "./sections/sectionSlice";
+import boardReducer from "./board/boardSlice";
 
 const store = configureStore({
 	reducer: {

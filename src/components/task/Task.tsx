@@ -12,6 +12,7 @@ interface ICardProps {
 	index: number,
 	sectionId: string
 }
+
 const Task: React.FC<ICardProps> = memo(function ({ task, index, sectionId }) {
 	const [modal, setModal] = useState<boolean>(false);
 	return (

@@ -2,7 +2,7 @@ import React from 'react'
 
 import AuthButton, { AuthButtonVariant } from '../../../components/UI/authButton/AuthButton';
 import { useAppDispatch } from '../../../hooks/useRedux';
-import { logout } from '../../../store/authSlice';
+import { logout } from '../../../store/auth/authSlice';
 import cl from './BoardsMenuHeader.module.scss';
 
 const BoardsMenuHeader: React.FC = () => {
