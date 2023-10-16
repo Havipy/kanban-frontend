@@ -1,6 +1,6 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import React, { useState } from 'react';
-import Editor from 'ckeditor5-custom-build/build/ckeditor';
+import Editor from 'ckeditor5-custom-build';
 import { useAppDispatch } from '../../hooks/useRedux';
 import { fetchUpdateTask } from '../../store/tasks/asyncActions';
 import { fetchDeleteTask } from '../../store/sections/asyncActions';

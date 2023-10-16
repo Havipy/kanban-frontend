@@ -62,12 +62,7 @@ const Login: React.FC = () => {
 					<BasicButton visible={true} variant={ButtonVariant.yellow}>Войти</BasicButton>
 				</div>
 			</form>
-			{isLoading
-				?
-				<LoadingCover />
-				:
-				<></>
-			}
+			{isLoading && <LoadingCover />}
 		</div>
 	);
 }
